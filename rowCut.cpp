@@ -47,23 +47,21 @@ std::deque<int> getIndexes(char *input){
 
 int main(int argc, char *argv[]){
   if(argc==1){
-    fprintf(stderr,"\tNeeded: -d delimter -r rows  -f infile \n\n");
+    fprintf(stderr,"\tNeeded: -r rows  -f infile \n\n");
     fprintf(stderr,"\toptional: -b bufferSize (for long lines)  \n\n");
     fprintf(stderr,"\texample1: to extract row 1,2,3 in file: \'infile\'\n");
-    fprintf(stderr,"\t\t./getliners  -r 1,2,3 -f infile \n");
+    fprintf(stderr,"\t\t./rowCut  -r 1,2,3 -f infile \n");
     
     return 0;
   }
 
   int argPos = 1;
-  const char *delims = " \t\n\r";
+
   char* rows = NULL;
   const char* datafile = NULL;
   int doCompl =0;
   while(argPos <argc){
-    if(strcmp(argv[argPos],"-d")==0)
-      delims = strdup(argv[argPos+1]);
-    else if(strcmp(argv[argPos],"-r")==0)
+    if(strcmp(argv[argPos],"-r")==0)
       rows = argv[argPos+1];
     else if(strcmp(argv[argPos],"-f")==0)
       datafile = argv[argPos+1];
@@ -72,7 +70,7 @@ int main(int argc, char *argv[]){
   
    else {
       printf("\tUnknown arguments: %s\n",argv[argPos]);
-      printf("USE -d delimter -r rows  -f infile\n");
+      printf("USE -r rows  -f infile\n");
       return 0;
     }
     argPos+=2;

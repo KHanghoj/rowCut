@@ -1,3 +1,13 @@
 
+appname := rowCut
 
-g++ rowCut.cpp -lz -O3 -o rowCut
+CC := gcc
+CXX := g++
+
+FLAGS := -O3 -lz 
+
+all: $(appname)
+
+$(appname): 
+	$(CXX) $(appname).cpp $(FLAGS) -o $(appname)
+
